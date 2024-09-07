@@ -34,7 +34,6 @@ export default function Todos({ auth, todos }) {
                     Todos from React and Laravel
                 </h1>
 
-
                 <div className="">
                     <form
                         action=""
@@ -66,33 +65,33 @@ export default function Todos({ auth, todos }) {
                     </form>
                 </div>
 
-                <div className="">
-                    <div className="border-separate border-spacing-2">
-                        {todos.map((todo, index) => (
-                            <div
-                                key={todo.id}
-                                className="p-2  flex w-full my-2 items-center justify-between"
-                            >
-                                <p>{todo.content}</p>
-                                <p>Created {todo.created}</p>
+                <div className="border-separate border-spacing-2">
+                    {todos.map((todo, index) => (
+                        <div
+                            key={todo.id}
+                            className="p-2  flex w-full my-2 items-center justify-between"
+                        >
+                            <p>{todo.content}</p>
+                            <p>Created {todo.created}</p>
 
-                                <form
-                                    action=""
-                                    onSubmit={(e) => e.preventDefault()}
+                            <form
+                                action=""
+                                onSubmit={(e) => e.preventDefault()}
+                            >
+                                <button
+                                    className="p-1 py-2 border bg-red-500  shadow-lg border-none rounded-lg block text-white hover:bg-red-600 transition-colors"
+                                    onClick={() => {
+                                        deleteTodo(todo.id);
+                                    }}
                                 >
-                                    <button
-                                        className="p-1 py-2 border bg-red-500  shadow-lg border-none rounded-lg block text-white hover:bg-red-600 transition-colors"
-                                        onClick={() => {
-                                            deleteTodo(todo.id);
-                                        }}
-                                    >
-                                        Delete
-                                    </button>
-                                </form>
-                            </div>
-                        ))}
-                    </div>
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    ))}
                 </div>
+
+                <pre className="text-yellow-600 text-center">Add edit functionality</pre>
             </div>
         </AuthenticatedLayout>
     );
