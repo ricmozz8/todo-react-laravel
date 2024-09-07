@@ -93,7 +93,7 @@ export default function Todos({ auth, todos }) {
                     </div>
 
                     <pre className="text-yellow-600 text-center">
-                        Try to add edit the functionality!
+                        Try to add edit functionality for todos!
                     </pre>
                 </div>
             </div>
