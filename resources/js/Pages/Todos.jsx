@@ -29,26 +29,32 @@ export default function Todos({ auth, todos }) {
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Todos" />
-            <div className="p-5 my-3 mx-auto max-w-md block bg-white rounded-lg shadow-lg ">
-                <h1 className="text-2xl font-bold text-center">
-                    Todos from React and Laravel
-                </h1>
+            <div className="h-screen flex items-center justify-center">
+                <div className="p-5 mx-auto max-w-xl block bg-white rounded-lg shadow-lg ">
+                    <h1 className="text-3xl m-2 font-bold text-center">
+                        Todos from React and Laravel
+                    </h1>
 
-                <div className="">
-                    <form
-                        action=""
-                        onSubmit={createTodo}
-                        method="POST"
-                        className="flex-col gap-4"
-                    >
-                        <input
-                            onChange={(e) => handleChange(e.target.value)}
-                            type="text"
-                            name="todo"
-                            placeholder="Create a new todo"
-                            className="w-full bg-slate-100 border-none rounded-lg shadow-lg p-2 hover:bg-slate-200 focus:bg-slate-200 transition-colors"
-                            value={todo.content}
-                        />
+                    <div className="">
+                        <form
+                            action=""
+                            onSubmit={createTodo}
+                            method="POST"
+                            className="flex gap-2 items-center p-2 max-w-md m-auto"
+                        >
+                            <input
+                                onChange={(e) => handleChange(e.target.value)}
+                                type="text"
+                                name="todo"
+                                placeholder="Create a new todo"
+                                className=" bg-slate-100 w-full border-none rounded-lg p-2 hover:bg-slate-200 focus:bg-slate-200 transition-colors"
+                                value={todo.content}
+                            />
+
+                            <button className="p-1 py-2 my-3 border bg-blue-500 border-none rounded-lg block text-white hover:bg-blue-700 transition-colors">
+                                Create
+                            </button>
+                        </form>
 
                         {/* Showing form errors */}
                         {pageErrors.length > 0 && (
@@ -58,40 +64,38 @@ export default function Todos({ auth, todos }) {
                                 ))}
                             </ul>
                         )}
+                    </div>
 
-                        <button className="p-1 py-2 my-3 w-full border bg-blue-500  shadow-lg border-none rounded-lg block text-white hover:bg-blue-700 transition-colors">
-                            Create
-                        </button>
-                    </form>
-                </div>
-
-                <div className="border-separate border-spacing-2">
-                    {todos.map((todo, index) => (
-                        <div
-                            key={todo.id}
-                            className="p-2  flex w-full my-2 items-center justify-between"
-                        >
-                            <p>{todo.content}</p>
-                            <p>Created {todo.created}</p>
-
-                            <form
-                                action=""
-                                onSubmit={(e) => e.preventDefault()}
+                    <div className=" divide-y divide-slate-200 max-w-md  m-auto">
+                        {todos.map((todo, index) => (
+                            <div
+                                key={todo.id}
+                                className="p-2  flex w-full my-2 items-center justify-between"
                             >
-                                <button
-                                    className="p-1 py-2 border bg-red-500  shadow-lg border-none rounded-lg block text-white hover:bg-red-600 transition-colors"
-                                    onClick={() => {
-                                        deleteTodo(todo.id);
-                                    }}
-                                >
-                                    Delete
-                                </button>
-                            </form>
-                        </div>
-                    ))}
-                </div>
+                                <p>{todo.content}</p>
+                                <p>Created {todo.created}</p>
 
-                <pre className="text-yellow-600 text-center">Add edit functionality</pre>
+                                <form
+                                    action=""
+                                    onSubmit={(e) => e.preventDefault()}
+                                >
+                                    <button
+                                        className="p-1 py-2 border bg-red-500 border-none rounded-lg block text-white hover:bg-red-600 transition-colors"
+                                        onClick={() => {
+                                            deleteTodo(todo.id);
+                                        }}
+                                    >
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        ))}
+                    </div>
+
+                    <pre className="text-yellow-600 text-center">
+                        Try to add edit the functionality!
+                    </pre>
+                </div>
             </div>
         </AuthenticatedLayout>
     );
