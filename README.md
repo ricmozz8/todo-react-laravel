@@ -7,13 +7,40 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Usage
+## Installation
 To install this Laravel application you must run in the base
 directory of this project the following command:
 ```bash
 composer install
 ```
 And create a .env file following the `.env.example` file. 
+
+Next, you need to run the following command to build the breeze+react project.
+```bash
+npm install
+```
+
+## Running the project
+To run this project you must make sure your database is running, and run first the migrations.
+```bash
+php artisan migrate
+```
+
+Once the migrations has been executed, you may run serve the project on localhost by typing on two terminals:
+```bash
+php artisan serve
+```
+And on the other:
+```bash
+npm run dev
+```
+
+Now, you may access the running app by accessing: `localhost:8000`
+
+> Note: The app may show an error saying 'missing app key on the .env file, Laravel will autogenerate one by pressing the button _generate an app key for me_
+
+___
+<br>
 
 ## About Laravel
 
