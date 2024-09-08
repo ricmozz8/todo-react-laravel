@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/todos',[TodosController::class, 'index'])->name('todos.index');
-Route::post('/todos',[TodosController::class, 'create'])->name('todos.edit');
+Route::post('/todos',[TodosController::class, 'store'])->name('todos.edit');
 Route::delete('/todos/{id}',[TodosController::class, 'destroy'])->name('todos.delete');
 
 Route::get('/dashboard', function () {

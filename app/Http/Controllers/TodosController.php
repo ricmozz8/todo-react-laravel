@@ -19,14 +19,9 @@ class TodosController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-        $validated = $request->validate([
-            'content'=>'required|min:2|max:60'
-        ]);
-
-        Todo::create($validated);
-        return redirect()->back();
+        //
     }
 
     /**
@@ -34,7 +29,12 @@ class TodosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'content'=>'required|min:2|max:60'
+        ]);
+
+        Todo::create($validated);
+        return redirect()->back();
     }
 
     /**
