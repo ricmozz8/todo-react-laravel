@@ -97,6 +97,8 @@ export default function Todos({ auth, todos }) {
                                 <p>{todo.content}</p>
                                 <p>Created {todo.created}</p>
 
+                                <div className="flex gap-2">
+
                                 <form
                                     action=""
                                     onSubmit={(e) => e.preventDefault()}
@@ -110,6 +112,16 @@ export default function Todos({ auth, todos }) {
                                         Delete
                                     </button>
                                 </form>
+
+                                <button
+                                        className="p-1 py-2 border bg-gray-200 border-none rounded-lg block hover:bg-gray-300 transition-colors"
+                                        onClick=""
+                                    >
+                                        Edit
+                                    </button>
+
+
+                                </div>
                             </div>
                         ))}
                     </div>
