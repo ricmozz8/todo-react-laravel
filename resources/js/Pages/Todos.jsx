@@ -1,30 +1,52 @@
+/*
+Like in python, you can import modules and other files using the import keyword.
+In javascript, sometimes those modules can include many functions and properties if
+you only wish to use one of them you can destructure the module using brackets.
+
+In this project, there are some libraries that are not included in
+React by default, for example: InertiaJS, and Tailwind CSS are libraries
+included by laravel by default.
+
+Read the documentation for more information.
+Inertiajs: https://inertiajs.com/
+*/
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { useForm, router, usePage } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function Todos({ auth, todos }) {
+    // this is a function defined in javascript using the arrow function syntax.
     const createTodo = (e) => {
         e.preventDefault();
+        // this prevents the event object from reloading the page and submitting the form
         router.post("/todos", todo);
+        // this is included in the inertiajs package, to make a post request to our laravel app
         setTodo({ content: "" });
+        // this resets the form using the setTodo function from the useState hook
     };
 
     const pageErrors = Object.values(usePage().props.errors);
+    // this is another inertiajs function that returns an array of errors
 
     const handleChange = (value) => {
+        // called once the user types into the input
         setTodo({ content: value });
     };
 
     const deleteTodo = (id) => {
+        // called when the user clicks on the delete button
         router.delete(route("todos.delete", id));
     };
 
+    // using the useState hook
+    // read more at: https://reactjs.org/docs/hooks-reference.html#usestate
     const [todo, setTodo] = useState({
         content: "",
     });
 
-    console.log(todos);
+    // React components are written in JSX, that allow us to write HTML inside of jsx files.
+    //Note: All components in this project are styled using Tailwind CSS.
 
     return (
         <AuthenticatedLayout user={auth.user}>

@@ -26,9 +26,18 @@ Route::get('/', function () {
     ]);
 });
 
+
+// TODOS URLS
+// here we define all the endpoints for our todos, please note that
+// although all the routes here are prefixed with /todos, they are managed
+// by a different method. Read about RESTful methods here: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+// the methods for resouces are: GET, POST, PUT, PATCH, DELETE
+
 Route::get('/todos',[TodosController::class, 'index'])->name('todos.index');
 Route::post('/todos',[TodosController::class, 'store'])->name('todos.edit');
 Route::delete('/todos/{id}',[TodosController::class, 'destroy'])->name('todos.delete');
+
+// -- end of todos urls --
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
